@@ -1,0 +1,41 @@
+/* pages/exchange/exchange.wxss */
+page{background-color: #f4f1ec;}
+.container{
+  display: flex;
+  flex-direction: column;
+  padding: 15rpx;
+  margin:20rpx 20rpx 20rpx 20rpx;
+}
+.img{
+  width: 300rpx;
+  height: 300rpx;
+}
+.succe{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 50rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  /* color: #45d6a9; */
+}
+.code{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 60rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  /* color: #45d6a9; */
+}
+.exit{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 160rpx;
+}
+.tips{
+  width: 100%;
+  font-size: 22rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}

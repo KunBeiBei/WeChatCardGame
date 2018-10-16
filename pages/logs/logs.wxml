@@ -1,0 +1,49 @@
+<!--logs.wxml-->
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">游戏排行</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">积分排行</view>
+</view>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+    <!-- 游戏排行 -->
+    <swiper-item>
+      <view class="log-list">
+        <view wx:if="{{logs}}">
+          <view wx:for="{{logs}}" wx:for-item="log" wx:key="this1" class='design'>
+            <view class='ranks-num'>{{log.num}}</view>
+              <view class="img-box">
+                <image class='imgs' src="{{log.avatarUrl}}"/>
+              </view>
+              <view class="log-name">{{log.nickName}}</view>
+              <view class="log-time">{{log.minPassTime}}秒</view>
+              <view class="log-num">{{log.minClickNum}}次</view>
+          </view>
+        </view>
+        <view wx:if="{{logerrors}}">
+          <view for="{{logerrors}}" class='news' wx:key="this2">
+            <view>{{logerrors.msg}}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+    <!-- 积分排行 -->
+    <swiper-item>
+      <view class="rank-list">
+        <view wx:if="{{rank}}">
+          <view  wx:for="{{rank}}" wx:for-item="item" wx:key="*this3" class='rank-box'>
+              <view class='rank-num'>{{item.num}}</view>
+              <view class="img-box">
+                <image src="{{item.avatarUrl}}" class="images"/>
+              </view>
+              <view class="rank-name">{{item.nickName}}</view>
+              <view class="rank-points">{{item.cumPoints}}积分</view>
+          </view>
+        </view>
+        <view wx:if="{{rankerrors}}">
+          <view for="{{rankerrors}}" class='news' wx:key="this4">
+            <view>{{rankerrors}}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+</swiper>
+

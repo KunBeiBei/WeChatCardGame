@@ -1,0 +1,47 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+button{
+  width: 200px;
+  background-color:#fff;
+  border:2px solid rgb(190, 70, 70);
+  border-radius: 30px;
+  color: rgb(190, 70, 70);
+  margin:10px;
+}
+.yuan{
+  width: 100%;
+  height: 100%;
+  background-color:rgb(190, 70, 70);
+  border:2px solid rgb(190, 70, 70);
+  border-radius: 20%;
+  color: rgb(190, 70, 70);
+  float: left;
+
+  margin-top: -70vh;
+}
+.userinfo-nicknames{
+  font-size: 40px;
+}
+page{
+  background-color: rgb(255, 255, 255);
+  color: rgb(190, 70, 70);
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}

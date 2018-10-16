@@ -1,0 +1,29 @@
+<view class="score">
+<view class="bg" bindtap='hideview' style='display:{{display}}'>
+</view>
+<view class="show" bindtap='hideview' style='display:{{display}}'>
+    <image class="showw" src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539668486222&di=daece95247dcc5973063fa562f7c03d6&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201708%2F11%2F20170811093442_sFcLY.gif'></image>
+    </view>
+    <view class="scoredetail">
+        <view class="scoredesc">时间</view>
+        <view class="scorenumber">{{useTimes}}.{{useTime}}</view>
+    </view>
+    <view class="scoredetail">
+        <view class="scoredesc">点击次数</view>
+        <view class="scorenumber">{{clickNum}}</view>
+    </view>
+   </view>
+<view class="">
+  <view class="board" >
+    <view class="rows" wx:for="{{cards}}" wx:for-index="idx" wx:for-item="row" wx:key="xxx">
+        <view wx:for="{{row}}" class="cols"   wx:for-index="idy"  wx:for-item="card" wx:key="xxx"> 
+            <view  class="" data-ix="{{idx}}"  data-iy="{{idy}}"  bindtap="onTap" >
+                <image class="card" style="display:{{card.state == 0 ? 'none' : 'block'}}" mode="scaleToFill" src= "{{card.src}}" data-card="{{card}}"></image>
+                <image class="card back" style="display:{{card.state != 0 ? 'none' : 'block'}}" mode="scaleToFill" src= "{{backImage}}" ></image>
+            </view>
+        </view>
+    </view>
+    </view>
+</view>
+    
+    

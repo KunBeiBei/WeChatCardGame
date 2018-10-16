@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+<div class="yuan"></div>
+  <view  class="userinfo">
+    <!-- <text class="userinfo-nickname"></text> -->
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{txt}}</text>
+
+    <!-- 积分 -->
+    <text class="userinfo-nicknames" style="margin-top:30rpx;">{{red}}积分</text>
+    
+    
+  </view>
+  <view class="usermotto"  >
+    <!-- 继续游戏 -->
+    <button class="user-motto" bindtap="startGame">{{button_txt_1}}</button>      
+    <!-- 查看奖励 -->
+    <button class="user-motto" bindtap="rewards">{{button_txt_2}}</button>
+  </view>
+  
+  
+</view>

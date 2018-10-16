@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/game/game",
+    "pages/redPackets/index",
+    "pages/admin/admin",
+    "pages/table/table",
+    "pages/exchange/exchange",
+    "pages/gift/gift"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor":"white",
+    "navigationBarTitleText": "微信翻牌小程序",
+    "navigationBarTextStyle":"black"
+  }
+}

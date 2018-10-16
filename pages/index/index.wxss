@@ -1,0 +1,30 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color:beige;
+}
+
+.user-motto{
+  margin:10px;
+}
+page{
+  background: url('http://202.104.22.2:60199/gamebg.jpg');
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
+  }

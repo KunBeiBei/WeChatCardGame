@@ -1,0 +1,7 @@
+<view class="container">
+  <image src='../images/finish.png' class='img'></image>
+  <text class='succe'>兑换码</text>
+  <text class='code'>{{code}}</text>
+  <text class='tips'>请根据兑换码在宣讲会后向“维尚招聘”兑换对应礼品，兑换码和兑换记录可以在《我的积分》中查看。</text>
+  <image src='../images/exit.png' class='exit' bindtap="re"></image>
+</view>

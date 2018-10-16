@@ -1,0 +1,48 @@
+/* pages/exchange/exchange.wxss */
+page{background-color: #f4f1ec;}
+.list{
+  width: 90%;
+  height: 260rpx;
+  background-color: #fff;
+  float: right;
+  margin-top: 30rpx;
+  position: relative;
+}
+.img{
+  width: 180rpx;
+  height: 180rpx;
+  position: absolute;
+  left: 40rpx;
+  top: 40rpx;
+  background-color: #ccc;
+}
+.tx{
+  width: 50%;
+  height: 60rpx;
+  line-height: 60rpx;
+  position: absolute;
+  right: 20rpx;
+  text-align: right;
+}
+.one{
+  top: 40rpx;
+  font-size: 34rpx;
+}
+.two{
+  top: 100rpx;
+  font-size: 30rpx;
+  color: #e23535;
+}
+.bt{
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #e23535;
+  color: #fff;
+  line-height: 60rpx;
+  text-align: center;
+  position: absolute;
+  top: 160rpx;
+  right: 20rpx;
+  font-size: 30rpx;
+  border-radius: 60rpx;
+}
