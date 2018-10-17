@@ -174,7 +174,7 @@ Page({
     return new Promise(function (resolve, reject) {
       wx.login({
         success: function (res) {
-          console.log("初始化次数");
+          console.log("初始化次数qqqqqqqqq");
           console.log(res.code);
           wx.request({
             url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getGameNnum',
