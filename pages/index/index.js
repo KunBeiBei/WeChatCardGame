@@ -100,20 +100,26 @@ Page({
   viewScore: function (e) {
     var that = this;
     console.log("排名页面跳转判断用户是否登录");
-    if (e.detail.rawData) {
-      //存放用户信息
-      wx.setStorageSync('userInfo', e.detail.rawData);
-      this.initNum().then(function (res) {
-        if (res.success === 1) {
-          wx.navigateTo({
-            url: '../logs/logs'
-          });
-          that.setData({
-            ts: ''
-          })
-        }
-      });
-    }
+    wx.navigateTo({
+      url: '../logs/logs'
+    });
+    that.setData({
+      ts: ''
+    })
+    // if (e.detail.rawData) {
+    //   //存放用户信息
+    //   wx.setStorageSync('userInfo', e.detail.rawData);
+    //   this.initNum().then(function (res) {
+    //     if (res.success === 1) {
+    //       // wx.navigateTo({
+    //       //   url: '../logs/logs'
+    //       // });
+    //       // that.setData({
+    //       //   ts: ''
+    //       // })
+    //     }
+    //   });
+    // }
   },
   adminCenter: function (e) {
     var that = this;
@@ -168,7 +174,7 @@ Page({
     return new Promise(function (resolve, reject) {
       wx.login({
         success: function (res) {
-          console.log("初始化次数");
+          console.log("初始化次数qqqqqqqqq");
           console.log(res.code);
           wx.request({
             url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getGameNnum',
