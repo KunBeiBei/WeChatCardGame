@@ -70,7 +70,7 @@
 }
 .log-time{
   margin-left:20rpx;
-  width:15%;
+  width:20%;
   height:80rpx;
   float:left;
   color:#bd1c1c;
