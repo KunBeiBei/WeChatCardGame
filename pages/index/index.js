@@ -74,7 +74,7 @@ Page({
                 duration: 3000
               });
               that.setData({
-                ts: '请在个人中心或者排行榜进行分享'
+                ts: '请点击右上角进行转发分享'
               }) 
               
             } else if (ress.success === 1){
