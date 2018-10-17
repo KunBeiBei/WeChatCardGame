@@ -86,5 +86,5 @@
   
 } */
 page{
-  background: url('http://202.104.22.2:60199/gamebg.jpg') center top;
+  background: url('http://202.104.22.2:60199/gamebg.jpg') center top ;
 }
