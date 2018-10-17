@@ -43,7 +43,6 @@ var allCard = ['card1',
   'card40',
   'card41',
   'card42'];
-var jf = ['5','10','20'];
 var backCardImage = "../images/cardbg.jpg"
 Page({
   data: {
@@ -52,16 +51,14 @@ Page({
     useTimes: 0,       // 游戏时间  
     checked: 0,       // 已匹配牌数
     allCard: allCard,    // 全部卡牌数组
-    jf: jf,            // 全部积分数组
     backImage: backCardImage, // 牌背面 图片地址
     modalHidden: true,    // 游戏完成提示是否显示
     firstX: -1,        // 点击的第一张卡牌的坐标 
     firstY: -1,
     cards: [],        // 随机挑选出来的牌   
-    size: 7,        // 界面显示的牌数=size*2
+    size: 8,        // 界面显示的牌数=size*2
     clickable: false,    // 当前是否可点击
     timer: '',        // 游戏计时的定时器
-    jfNum: 0,       // 获得积分
     display:''
   },
   
@@ -84,14 +81,14 @@ Page({
       }
     ).splice(0, Math.floor(data.size)); // 打乱牌堆,挑出size/2张牌
 
-    //打乱积分牌
-    var j = this.data.jf.sort(
-      function(a,b){
-        return Math.random() > .5 ? -1 : 1; 
-      }
-    ).splice(0, Math.floor(8-data.size));
-    this.data.jfNum = parseInt(j[0]);
-    tmp.splice(0, 0, j[0]);//取一张牌
+    // //打乱积分牌
+    // var j = this.data.jf.sort(
+    //   function(a,b){
+    //     return Math.random() > .5 ? -1 : 1; 
+    //   }
+    // ).splice(0, Math.floor(8-data.size));
+    // this.data.jfNum = parseInt(j[0]);
+    // tmp.splice(0, 0, j[0]);//取一张牌
     tmp = tmp.concat(tmp).sort(function (a, b) { return Math.random() > .5 ? -1 : 1; }); // 牌*2,再打乱
       // 添加src,state,转成二维数组方面展示
       var cards = [];
@@ -176,7 +173,7 @@ Page({
             { 
               'time': t/100, 
               'click': data.clickNum 
-            }, this.data.jfNum).then(function (res) {
+            }).then(function (res) {
               if (res.success === 1) {
               }else{
                 wx.showToast({
@@ -204,7 +201,7 @@ Page({
         this.data.cards[ix][iy].state = 0;
     this.setData({ cards: this.data.cards });
   },
-  saveScore: function (score,jf) { // 保存分数
+  saveScore: function (score) { // 保存分数
     
     return new Promise(function (resolve, reject) {
       wx.login({
@@ -215,8 +212,7 @@ Page({
             method: 'POST',
             data: {
               'code': res.code,
-              'score': score,
-              'jf': jf
+              'score': score
             },
             success: function (data) {
               if (data.data.state == 200) {
