@@ -74,7 +74,7 @@ Page({
                 duration: 3000
               });
               that.setData({
-                ts: '请在个人中心或者排行榜进行分享'
+                ts: '请点击右上角进行转发分享'
               }) 
               
             } else if (ress.success === 1){
@@ -100,20 +100,26 @@ Page({
   viewScore: function (e) {
     var that = this;
     console.log("排名页面跳转判断用户是否登录");
-    if (e.detail.rawData) {
-      //存放用户信息
-      wx.setStorageSync('userInfo', e.detail.rawData);
-      this.initNum().then(function (res) {
-        if (res.success === 1) {
-          wx.navigateTo({
-            url: '../logs/logs'
-          });
-          that.setData({
-            ts: ''
-          })
-        }
-      });
-    }
+    wx.navigateTo({
+      url: '../logs/logs'
+    });
+    that.setData({
+      ts: ''
+    })
+    // if (e.detail.rawData) {
+    //   //存放用户信息
+    //   wx.setStorageSync('userInfo', e.detail.rawData);
+    //   this.initNum().then(function (res) {
+    //     if (res.success === 1) {
+    //       // wx.navigateTo({
+    //       //   url: '../logs/logs'
+    //       // });
+    //       // that.setData({
+    //       //   ts: ''
+    //       // })
+    //     }
+    //   });
+    // }
   },
   adminCenter: function (e) {
     var that = this;
