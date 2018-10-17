@@ -5,7 +5,52 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    var o = wx.getStorageSync('openId');
+    if(0 == undefined || 0 == ""){
+      wx.login({
+        success: res => {
+          console.log(res.code);
+          wx.request({
+            url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getOpenId',
+            method: 'POST',
+            data: {
+              'code': res.code
+            },
+            success: function (data) {
+              if (data.data.state == 200) {
+                wx.setStorageSync('openId', data.data.openId);
+              } else {
+                console.log("登录失败");
+              }
+            }
+          })
+        }
+      });
+    }
+    this.initNum();
     // this.bindback();
+  },
+  //初始化次数
+  initNum: function () {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        // var userName = wx.getStorageSync('userInfo');
+        var openId = wx.getStorageSync('openId');
+        wx.request({
+          url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/initNum',
+          method: 'POST',
+          data: {
+            'openId': openId
+          },
+          success: function (data) {
+            if (data.data.state == 200) {
+              console.log(data.data.mes);
+            }
+          }
+        })
+      }
+    })
   },
   // bindback: function () {
   //   const back = wx.getBackgroundAudioManager();

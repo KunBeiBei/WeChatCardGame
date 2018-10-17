@@ -52,13 +52,14 @@ Page({
   },
   startGame: function(e){
     var that = this;
-    console.log("游戏页面跳转判断用户是否登录"); 
-    if (e.detail.rawData){
+    // console.log("游戏页面跳转判断用户是否登录"); 
+    if (e.detail.userInfo){
       //存放用户信息
       wx.setStorageSync('userInfo', e.detail.rawData);
+      this.setUserImage();
       
-      this.initNum().then(function (res) {
-        if(res.success === 1){
+      // this.initNum().then(function (res) {
+      //   if(res.success === 1){
           that.getGameNum().then(function (ress) {
             if (ress.success === 3) { 
               //直接进入游戏
@@ -79,7 +80,6 @@ Page({
               
             } else if (ress.success === 1){
               //填表进游戏
-              
               wx.navigateTo({
                 url: '../table/table'
               });
@@ -93,8 +93,8 @@ Page({
               });
             }
           });
-        }
-      }) 
+        // }
+      // }) 
     }
   },
   viewScore: function (e) {
@@ -127,71 +127,83 @@ Page({
     if (e.detail.rawData) {
       //存放用户信息
       wx.setStorageSync('userInfo', e.detail.rawData);
-      this.initNum().then(function (res) {
-        if (res.success === 1) {
+      this.setUserImage();
+      // this.initNum().then(function (res) {
+        // if (res.success === 1) {
           wx.navigateTo({
             url: '../admin/admin'
           });
           that.setData({
             ts: ''
           })
-        }
-      });
+        // }
+      // });
     }
   },
   
   //初始化次数
-  initNum:function(){
-    var that = this;
-    return new Promise(function (resolve, reject) {
-      wx.login({
-        success: function (res) {
-          var userName = wx.getStorageSync('userInfo');
-          console.log("初始化次数");
-          console.log(res.code);
-          wx.request({
-            url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/initNum',
-            method: 'POST',
-            data: {
-              'code': res.code,
-              'userName': userName
-            },
-            success: function (data) {
-              if (data.data.state == 200) {
-                resolve(data.data);
-              }else{
-                reject(data.data);
-              }
-            }
-          })
-        }
-      })
-    });
-  },
+  // initNum:function(){
+  //   var that = this;
+  //   return new Promise(function (resolve, reject) {
+  //     wx.login({
+  //       success: function (res) {
+  //         var userName = wx.getStorageSync('userInfo');
+  //         console.log("初始化次数");
+  //         console.log(res.code);
+  //         wx.request({
+  //           url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/initNum',
+  //           method: 'POST',
+  //           data: {
+  //             'code': res.code,
+  //             'userName': userName
+  //           },
+  //           success: function (data) {
+  //             if (data.data.state == 200) {
+  //               wx.setStorageSync('openId', data.data.openId);
+  //               resolve(data.data);
+  //             }else{
+  //               reject(data.data);
+  //             }
+  //           }
+  //         })
+  //       }
+  //     })
+  //   });
+  // },
   //获取游戏次数
   getGameNum: function () {
     var that = this;
     return new Promise(function (resolve, reject) {
-      wx.login({
-        success: function (res) {
-          console.log("初始化次数abc");
-          console.log(res.code);
-          wx.request({
-            url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getGameNnum',
-            method: 'POST',
-            data: {
-              'code': res.code
-            },
-            success: function (data) {
-              if (data.data.state == 200) {
-                resolve(data.data);
-              } else {
-                reject(data.data);
-              }
-            }
-          })
+      var openId = wx.getStorageSync('openId');
+      wx.request({
+        url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getGameNnum',
+        method: 'POST',
+        data: {
+          'openId': openId
+        },
+        success: function (data) {
+          if (data.data.state == 200) {
+            resolve(data.data);
+          } else {
+            reject(data.data);
+          }
         }
       })
     });
+  },
+  setUserImage:function(){
+    var userName = wx.getStorageSync('userInfo');
+    var openId = wx.getStorageSync('openId');
+    wx.request({
+      url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getUserImage',
+      method: 'POST',
+      data: {
+        'openId': openId,
+        'userName': userName
+      },
+      success: function (data) {
+        console.log(data.data);
+      }
+    })
   }
 })
