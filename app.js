@@ -5,8 +5,8 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    var o = wx.getStorageSync('openId');
-    if(0 == undefined || 0 == ""){
+    var open = wx.getStorageSync('openId');
+    if(open == undefined || open == ""){
       wx.login({
         success: res => {
           console.log(res.code);
