@@ -5,8 +5,8 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    var o = wx.getStorageSync('openId');
-    if(0 == undefined || 0 == ""){
+    var open = wx.getStorageSync('openId');
+    if(open == undefined || open == ""){
       wx.login({
         success: res => {
           console.log(res.code);
@@ -37,6 +37,9 @@ App({
       success: function (res) {
         // var userName = wx.getStorageSync('userInfo');
         var openId = wx.getStorageSync('openId');
+        console.log("openId");
+        console.log(openId);
+        console.log("openId");
         wx.request({
           url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/initNum',
           method: 'POST',
@@ -47,6 +50,7 @@ App({
             if (data.data.state == 200) {
               console.log(data.data.mes);
             }
+            console.log(data.data);
           }
         })
       }

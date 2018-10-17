@@ -52,23 +52,22 @@ Page({
     checked: 0,       // 已匹配牌数
     allCard: allCard,    // 全部卡牌数组
     backImage: backCardImage, // 牌背面 图片地址
-    modalHidden: true,    // 游戏完成提示是否显示
     firstX: -1,        // 点击的第一张卡牌的坐标 
     firstY: -1,
     cards: [],        // 随机挑选出来的牌   
     size: 8,        // 界面显示的牌数=size*2
     clickable: false,    // 当前是否可点击
     timer: '',        // 游戏计时的定时器
-    display:''
+    display:'',
+    jf:0
   },
-  
-  hideview: function () {
+  hideview:function(){
     this.setData({
-      display: "none"
+      display:"none"
     });
     wx.redirectTo({
-      url: '../redPackets/index?red=' + this.data.jfNum
-    });
+      url: '../redPackets/index?red='+this.data.jf
+    })
   },
   startGame: function () { // 开始游戏
     var data = this.data;
@@ -103,15 +102,13 @@ Page({
           state: 1   // 为1时显示图片,为0时显示牌背面
         });
       }
-      this.data.cards = cards;
+      //this.data.cards = cards;
       this.setData({
         cards: cards,
         clickNum: 0,
         useTime: 0,
         useTimes: 0,
         checked: 0,
-        modalHidden: true,
-        firstX: -1,
         clickable: false
       });
 
@@ -161,21 +158,24 @@ Page({
         data.checked += 1; // 完成配对数++
         data.firstX = -1; // 准备下一轮匹配 
         // 1.2.1.2 检查是否所有牌都已经翻过来,都已翻过来提示游戏结束
-        if (data.checked == data.size+1) { // 所有牌都配对成功了!
-          this.setData({
-            modalHidden:false,
-            display: "block"
-          });
+        if (data.checked == data.size) { // 所有牌都配对成功了!
           clearInterval(this.data.timer); // 暂停计时
+          this.setData({
+            display: "block"
+          })
           this.data.timer = '';
           var t = parseInt(data.useTimes + "" + data.useTime);
-          this.saveScore(
-            { 
-              'time': t/100, 
-              'click': data.clickNum 
-            }).then(function (res) {
+          if(t >= 9000){
+            that.setData({
+              jf: 0
+            })
+          }else{
+            this.saveScore({ 'time': t / 100, 'click': data.clickNum }).then(function (res) {
               if (res.success === 1) {
-              }else{
+                that.setData({
+                  jf: res.jf
+                })
+              } else {
                 wx.showToast({
                   title: res.mes,
                   icon: 'loading',
@@ -184,6 +184,7 @@ Page({
                 });
               }
             }); // 保存成绩
+          }
         }
       } else {  // 1.2.2 两张牌不同, 修改两张牌的state为 0
         data.cards[data.firstX][data.firstY].state = 0;
@@ -195,35 +196,34 @@ Page({
         }, 500); //过半秒再翻回去
       }
     }
-  }, turnAllBack: function () {
+  }, 
+  turnAllBack: function () {
     for (var ix in this.data.cards)
       for (var iy in this.data.cards[ix])
         this.data.cards[ix][iy].state = 0;
     this.setData({ cards: this.data.cards });
   },
   saveScore: function (score) { // 保存分数
-    
     return new Promise(function (resolve, reject) {
-      wx.login({
-        success: function (res) {
-          var userName = wx.getStorageSync('userInfo');
-          wx.request({
-            url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getPlay',
-            method: 'POST',
-            data: {
-              'code': res.code,
-              'score': score
-            },
-            success: function (data) {
-              if (data.data.state == 200) {
-                resolve(data.data);
-              } else {
-                reject(data.data);
-              }
-            }
-          });
+      var openId = wx.getStorageSync('openId');
+      console.log(openId);
+      wx.request({ 
+        url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/getPlay',
+        method: 'POST',
+        data: {
+          'openId': openId,
+          'score': score
+        },
+        success: function (data) {
+          if (data.data.state == 200) {
+            resolve(data.data);
+          } else {
+            reject(data.data);
+          }
+          console.log(data.data);
         }
-      })
+      });
+          
     });
   }
   , "disableScroll": true,
@@ -237,9 +237,6 @@ Page({
     this.startGame();
   },
   modalCancle: function () {
-    this.setData({
-      modalHidden: true,
-    })
     wx.navigateTo({
       url: '../admin/admin'
     })

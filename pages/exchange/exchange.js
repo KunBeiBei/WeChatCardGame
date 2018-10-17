@@ -9,7 +9,7 @@ Page({
   },
   onLoad: function (obj) {
     var that = this
-    that.openid = obj.openid
+    that.openid = wx.getStorageSync('openId');
     wx.request({
       url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/api2/getGift',
       success: function (res) {
