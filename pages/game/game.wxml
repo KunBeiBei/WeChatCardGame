@@ -19,7 +19,7 @@
         <view wx:for="{{row}}" class="cols"   wx:for-index="idy"  wx:for-item="card" wx:key="xxx"> 
             <view  class="" data-ix="{{idx}}"  data-iy="{{idy}}"  bindtap="onTap" >
                 <image class="card" style="display:{{card.state == 0 ? 'none' : 'block'}}" mode="scaleToFill" src= "{{card.src}}" data-card="{{card}}"></image>
-                <image class="card back" style="display:{{card.state != 0 ? 'none' : 'block'}}" mode="scaleToFill" src= "{{backImage}}" ></image>
+                <image class="card back" style="display:{{card.state != 0 ? 'none' : 'block'}}" mode="scaleToFill" src= "../images/cardbg.jpg" ></image>
             </view>
         </view>
     </view>
