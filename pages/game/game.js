@@ -1,130 +1,116 @@
-//index.js
-//获取应用实例
-var app = getApp()
-var allCard = ['card1',
-  'card2',
-  'card3',
-  'card4',
-  'card5',
-  'card6',
-  'card7',
-  'card8'];
-var backCardImage = "../images/cardbg.jpg"
+//game.js
+var app = getApp();
+var checked = 0;    //已匹配牌数
+var size = 8;       // 界面显示的牌数=size*2
+var firstX = -1;    // 点击的第一张卡牌的坐标
+var firstY = -1;    // 点击的第一张卡牌的坐标
+var jf = 0;         //积分
 Page({
   data: {
-    clickNum: 0,      // 点击次数
-    useTime: 0,       // 游戏时间  
-    useTimes: 0,       // 游戏时间  
-    checked: 0,       // 已匹配牌数
-    allCard: allCard,    // 全部卡牌数组
-    backImage: backCardImage, // 牌背面 图片地址
-    firstX: -1,        // 点击的第一张卡牌的坐标 
-    firstY: -1,
-    cards: [],        // 随机挑选出来的牌   
-    size: 8,        // 界面显示的牌数=size*2
+    clickNum: 0,         // 点击次数*
+    useTime: 0,          // 游戏时间*秒数
+    useTimes: 0,         // 游戏时间*毫秒
+    cards: [],           // 随机挑选出来的牌   
     clickable: false,    // 当前是否可点击
-    timer: '',        // 游戏计时的定时器
-    display:'',
-    jf:0
+    timer: '',           // 游戏计时的定时器
+    display:''
   },
+  //积分显示页面跳转
   hideview:function(){
     this.setData({
       display:"none"
     });
     wx.redirectTo({
-      url: '../redPackets/index?red='+this.data.jf
+      url: '../redPackets/index?red='+jf
     })
   },
-  startGame: function () { // 开始游戏
+  //开始游戏
+  startGame: function () { 
     var data = this.data;
     var that = this;
     console.log('开始游戏');
     //打乱正常牌
-    var tmp = this.data.allCard.sort(//对数组中的元素进行排序
+    checked = 0;
+    firstX = -1;
+    firstY = -1;
+    var allCard = wx.getStorageSync("allCard");
+    var tmp = allCard.sort(//对数组中的元素进行排序
       function (a, b) { 
         return Math.random() > .5 ? -1 : 1; 
       }
-    ).splice(0, Math.floor(data.size)); // 打乱牌堆,挑出size/2张牌
-
-    // //打乱积分牌
-    // var j = this.data.jf.sort(
-    //   function(a,b){
-    //     return Math.random() > .5 ? -1 : 1; 
-    //   }
-    // ).splice(0, Math.floor(8-data.size));
-    // this.data.jfNum = parseInt(j[0]);
-    // tmp.splice(0, 0, j[0]);//取一张牌
-    tmp = tmp.concat(tmp).sort(function (a, b) { return Math.random() > .5 ? -1 : 1; }); // 牌*2,再打乱
-      // 添加src,state,转成二维数组方面展示
-      var cards = [];
-      var ix = -1; var iy = 0;
-      for (var i in tmp) {
-        if (i % 4 == 0) {
-          cards.push([]);
-          ix++; iy = 0;
-        }
-        cards[ix].push({
-          src: '../images/' + tmp[i] + '.jpg',
-          state: 1   // 为1时显示图片,为0时显示牌背面
-        });
+    ).splice(0, Math.floor(size));
+    
+    //再次打乱
+    tmp = tmp.concat(tmp).sort(function (a, b) { return Math.random() > .5 ? -1 : 1; }); 
+    // 添加src,state,转成二维数组方面展示
+    var cards = [];
+    var ix = -1; var iy = 0;
+    for (var i in tmp) {
+      if (i % 4 == 0) {
+        cards.push([]);
+        ix++; iy = 0;
       }
-      //this.data.cards = cards;
-      this.setData({
-        cards: cards,
-        clickNum: 0,
-        useTime: 0,
-        useTimes: 0,
-        checked: 0,
-        clickable: false
+      cards[ix].push({
+        src: '../images/' + tmp[i] + '.jpg',
+        state: 1   // 为1时显示图片,为0时显示牌背面
       });
+    }
+    this.setData({
+      cards: cards,
+      clickNum: 0,
+      useTime: 0,
+      useTimes: 0,
+      clickable: false
+    });
 
-      var that = this;
-      setTimeout(function () {
-        that.turnAllBack();  // 所有的牌翻到背面
-        data.clickable = true; // 开始计时了才让点
-        if (data.timer === '') {
-          data.timer = setInterval(function () {
-            data.useTime += 1;
-            if (data.useTime > 100){
-              data.useTime = 0;
-              data.useTimes += 1;
-            }
-            that.setData({ 
-              useTime: data.useTime,
-              useTimes: data.useTimes
-            });
-          }, 10); // 游戏开始计时
-        } else {
-          that.setData({ useTime: 0 });
-        }
-      }, 3000); // 游戏开始前先让玩家记忆几秒钟
+    var that = this;
+    setTimeout(function () {
+      that.turnAllBack();  // 所有的牌翻到背面
+      data.clickable = true; // 开始计时了才让点
+      if (data.timer === '') {
+        data.timer = setInterval(function () {
+          data.useTime += 1;
+          if (data.useTime > 100){
+            data.useTime = 0;
+            data.useTimes += 1;
+          }
+          that.setData({ 
+            useTime: data.useTime,
+            useTimes: data.useTimes
+          });
+        }, 10); // 游戏开始计时
+      } else {
+        that.setData({ useTime: 0 });
+      }
+    }, 3000); // 游戏开始前先让玩家记忆几秒钟
   },
   onTap: function (event) {
     var that = this;
     var data = this.data;
-    var ix = event.currentTarget.dataset.ix; // 获取点击对象的坐标
+    var ix = event.currentTarget.dataset.ix;               // 获取点击对象的坐标
     var iy = event.currentTarget.dataset.iy;
     if (data.cards[ix][iy].state != 0 || !data.clickable)  //点击的不是未翻过来的牌或者现在不让点直接pass
       return;
-    that.setData({ clickNum: ++data.clickNum }); //点击数加1   
+    that.setData({ clickNum: ++data.clickNum });           //点击数加1   
     // 1. 检测是翻过来的第几张牌
-    if (data.firstX == -1) {
+    if (firstX == -1) {
       // 1.1 第一张修改状态为 1
       data.cards[ix][iy].state = 1;
-      data.firstX = ix; data.firstY = iy;  // 记下坐标
+      firstX = ix; 
+      firstY = iy
       that.setData({ cards: data.cards });     // 通过setData让界面变化
     } else {
       // 1.2 前面已经有张牌翻过来了,先翻到正面然后看是不是一样
       data.cards[ix][iy].state = 1;
       that.setData({ cards: data.cards });
-      if (data.cards[data.firstX][data.firstY].src === data.cards[ix][iy].src) {
+      if (data.cards[firstX][firstY].src === data.cards[ix][iy].src) {
         // 1.2.1.1 两张牌相同, 修改两张牌的state为2完成配对
-        data.cards[data.firstX][data.firstY].state = 2;
+        data.cards[firstX][firstY].state = 2;
         data.cards[ix][iy].state = 2;
-        data.checked += 1; // 完成配对数++
-        data.firstX = -1; // 准备下一轮匹配 
+        checked += 1; // 完成配对数++
+        firstX = -1;// 准备下一轮匹配 
         // 1.2.1.2 检查是否所有牌都已经翻过来,都已翻过来提示游戏结束
-        if (data.checked == data.size) { // 所有牌都配对成功了!
+        if (checked == size) { // 所有牌都配对成功了!
           clearInterval(this.data.timer); // 暂停计时
           this.setData({
             display: "block"
@@ -132,15 +118,11 @@ Page({
           this.data.timer = '';
           var t = parseInt(data.useTimes + "" + data.useTime);
           if(t >= 9000){
-            that.setData({
-              jf: 0
-            })
+            jf = 0;
           }else{
             this.saveScore({ 'time': t / 100, 'click': data.clickNum }).then(function (res) {
               if (res.success === 1) {
-                that.setData({
-                  jf: res.jf
-                })
+                jf = res.jf;
               } else {
                 wx.showToast({
                   title: res.mes,
@@ -153,9 +135,9 @@ Page({
           }
         }
       } else {  // 1.2.2 两张牌不同, 修改两张牌的state为 0
-        data.cards[data.firstX][data.firstY].state = 0;
+        data.cards[firstX][firstY].state = 0;
         data.cards[ix][iy].state = 0;
-        data.firstX = -1;
+        firstX = -1;
         data.clickable = false;
         setTimeout(function () {
           that.setData({ cards: data.cards, clickable: true });
@@ -212,7 +194,7 @@ Page({
   },
   onShow: function () {
     console.log("onShow");
-    if (this.data.checked == this.data.size)
+    if (checked == size)
       this.startGame()
   },
   onHide: function () {

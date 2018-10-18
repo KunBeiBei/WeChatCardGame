@@ -28,6 +28,15 @@ App({
       });
     }
     this.initNum();
+    var allCard = ['card1',
+      'card2',
+      'card3',
+      'card4',
+      'card5',
+      'card6',
+      'card7',
+      'card8'];
+    wx.setStorageSync("allCard", allCard);
     // this.bindback();
   },
   //初始化次数
