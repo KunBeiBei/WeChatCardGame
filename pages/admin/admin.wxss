@@ -115,4 +115,11 @@
   width: 100%;
   height: 580rpx;
 }
-page{background: url('http://202.104.22.2:60199/gamebg.jpg') center top; }
+page{
+  background: url('http://202.104.22.2:60199/gamebg.jpg');
+  overflow-x:hidden;
+  overflow-y:hidden;
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
+  }
