@@ -8,8 +8,8 @@ Page({
     list: '',
     gift: '',
     indicatorDots: false,
-    autoplay: false,
-    interval: 5000,
+    autoplay: true,
+    interval: 4000,
     duration: 1000
   },
   onShow: function () {

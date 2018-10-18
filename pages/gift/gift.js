@@ -9,6 +9,8 @@ Page({
     })
   },
   re:function(){
-    wx.navigateBack()
+    wx.navigateBack({
+      delta: 2
+    })
   }
 })

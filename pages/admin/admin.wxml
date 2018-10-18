@@ -23,7 +23,7 @@
       <button class='get' bindtap="exchange" data-id="{{openid}}">积分兑换</button>
     </view>
   </view>
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper' circular="true">
     <swiper-item>
       <view class='bottom'>
         <view class='one'>积分记录</view>

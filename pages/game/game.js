@@ -82,7 +82,7 @@ Page({
       } else {
         that.setData({ useTime: 0 });
       }
-    }, 3000); // 游戏开始前先让玩家记忆几秒钟
+    }, 6000); // 游戏开始前先让玩家记忆几秒钟
   },
   onTap: function (event) {
     var that = this;
@@ -141,7 +141,7 @@ Page({
         data.clickable = false;
         setTimeout(function () {
           that.setData({ cards: data.cards, clickable: true });
-        }, 500); //过半秒再翻回去
+        }, 350); //过半秒再翻回去
       }
     }
   }, 

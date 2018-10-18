@@ -13,8 +13,8 @@ Page({
   //事件处理函数
   //继续游戏
   startGame: function () {
-    wx.redirectTo({
-      url: '../index/index'
+    wx.navigateBack({
+      delta: 2
     })
   },
   //查看奖励
