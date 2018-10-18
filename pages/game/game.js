@@ -56,11 +56,11 @@ Page({
       });
     }
     this.setData({
-      cards: cards,
-      clickNum: 0,
-      useTime: 0,
-      useTimes: 0,
-      clickable: false
+      cards: cards
+      // clickNum: 0,
+      // useTime: 0,
+      // useTimes: 0,
+      // clickable: false
     });
 
     var that = this;
@@ -116,7 +116,8 @@ Page({
             display: "block"
           })
           this.data.timer = '';
-          var t = parseInt(data.useTimes + "" + data.useTime);
+          var useTime = data.useTime < 10 ? "0" + data.useTime : data.useTime;
+          var t = parseInt(data.useTimes + "" + useTime);
           if(t >= 9000){
             jf = 0;
           }else{
