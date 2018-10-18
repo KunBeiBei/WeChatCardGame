@@ -1,23 +1,31 @@
 /**index.wxss**/
 .userinfo {
-  display: flex;
+  /* //flex */
+  display: block;
   flex-direction: column;
   align-items: center;
+  margin-top: 20rpx;
+  height: 180rpx;
+  width: 50%;
+  text-align: center;
 }
 
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
-  color:beige;
+  color:rgb(0, 0, 0);
+  width: 100%;
+  text-align: center;
+  display: block;
 }
 
 .user-motto{
   margin:10px;
+  background-color: rgb(226, 226, 226);
 }
 page{
   background: url('http://202.104.22.2:60199/gamebg.jpg');
@@ -28,3 +36,6 @@ page{
   background-size:100% 100%;
   -moz-background-size:100% 100%;
   }
+.container{
+  padding: 50% 0;
+}

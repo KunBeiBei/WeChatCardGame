@@ -74,14 +74,15 @@
     margin: 5rpx;
 }
 .card{
-     width:  175rpx;
-     height: 237rpx;
+     width:  170rpx;
+     height: 235rpx;
      padding:1rpx;
      margin: 2rpx;
 }
 .modal{
   float:left;
 }
-/* page{
+page{
   background: url('http://202.104.22.2:60199/gamebg.jpg') center top;
-} */
+  width:100%;overflow: hidden;
+}
