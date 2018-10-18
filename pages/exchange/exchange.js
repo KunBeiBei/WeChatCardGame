@@ -1,9 +1,7 @@
 Page({
   data: {
     gift: [
-      { src: '', name: '小熊公仔', points: 300, id: 1 },
-      { src: '', name: '水壶', points: 250, id: 2 },
-      { src: '', name: '贴纸', points: 100, id: 3 },
+      
     ],
     openid: ''
   },

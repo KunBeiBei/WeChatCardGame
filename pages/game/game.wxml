@@ -2,7 +2,7 @@
 <view class="bg" bindtap='hideview' style='display:{{display}}'>
 </view>
 <view class="show" bindtap='hideview' style='display:{{display}}'>
-    <image class="showw" src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539668486222&di=daece95247dcc5973063fa562f7c03d6&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201708%2F11%2F20170811093442_sFcLY.gif'></image>
+    <image class="showw" src='http://202.104.22.2:60199/timg.gif'></image>
     </view>
     <view class="scoredetail">
         <view class="scoredesc">时间</view>
