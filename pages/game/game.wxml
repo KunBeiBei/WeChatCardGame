@@ -6,7 +6,7 @@
     </view>
     <view class="scoredetail">
         <view class="scoredesc">时间</view>
-        <view class="scorenumber">{{useTimes}}.{{useTime}}</view>
+        <view class="scorenumber">{{useTimes}}</view>
     </view>
     <view class="scoredetail">
         <view class="scoredesc">点击次数</view>

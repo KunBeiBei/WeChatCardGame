@@ -7,7 +7,8 @@
     "pages/admin/admin",
     "pages/table/table",
     "pages/exchange/exchange",
-    "pages/gift/gift"
+    "pages/gift/gift",
+    "pages/testGame/game"
   ],
   "window":{
     "backgroundTextStyle":"light",

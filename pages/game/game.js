@@ -8,8 +8,7 @@ var jf = 0;         //积分
 Page({
   data: {
     clickNum: 0,         // 点击次数*
-    useTime: 0,          // 游戏时间*秒数
-    useTimes: 0,         // 游戏时间*毫秒
+    useTimes: 0,         // 游戏时间*秒秒
     cards: [],           // 随机挑选出来的牌   
     clickable: false,    // 当前是否可点击
     timer: '',           // 游戏计时的定时器
@@ -57,10 +56,6 @@ Page({
     }
     this.setData({
       cards: cards
-      // clickNum: 0,
-      // useTime: 0,
-      // useTimes: 0,
-      // clickable: false
     });
 
     var that = this;
@@ -69,18 +64,13 @@ Page({
       data.clickable = true; // 开始计时了才让点
       if (data.timer === '') {
         data.timer = setInterval(function () {
-          data.useTime += 1;
-          if (data.useTime > 100){
-            data.useTime = 0;
-            data.useTimes += 1;
-          }
+          data.useTimes ++;
           that.setData({ 
-            useTime: data.useTime,
             useTimes: data.useTimes
           });
-        }, 10); // 游戏开始计时
+        }, 1000); // 游戏开始计时
       } else {
-        that.setData({ useTime: 0 });
+        that.setData({ useTimes: 0 });
       }
     }, 6000); // 游戏开始前先让玩家记忆几秒钟
   },
@@ -116,12 +106,10 @@ Page({
             display: "block"
           })
           this.data.timer = '';
-          var useTime = data.useTime < 10 ? "0" + data.useTime : data.useTime;
-          var t = parseInt(data.useTimes + "" + useTime);
-          if(t >= 9000){
+          if (data.useTimes >= 90){
             jf = 0;
           }else{
-            this.saveScore({ 'time': t / 100, 'click': data.clickNum }).then(function (res) {
+            this.saveScore({ 'time': data.useTimes, 'click': data.clickNum }).then(function (res) {
               if (res.success === 1) {
                 jf = res.jf;
               } else {
