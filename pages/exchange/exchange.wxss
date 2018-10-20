@@ -1,7 +1,7 @@
 /* pages/exchange/exchange.wxss */
 page{background-color: #f4f1ec;}
 .list{
-  width: 90%;
+  width: 95%;
   height: 260rpx;
   background-color: #fff;
   float: right;
@@ -9,11 +9,11 @@ page{background-color: #f4f1ec;}
   position: relative;
 }
 .img{
-  width: 180rpx;
-  height: 180rpx;
+  width: 215rpx;
+  height: 215rpx;
   position: absolute;
-  left: 40rpx;
-  top: 40rpx;
+  left: 20rpx;
+  top: 20rpx;
   background-color: #ccc;
 }
 .tx{

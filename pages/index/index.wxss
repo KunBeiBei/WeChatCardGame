@@ -4,7 +4,7 @@
   display: block;
   flex-direction: column;
   align-items: center;
-  margin-top: 20rpx;
+  margin-top: -33rpx;/*20rpx*/
   height: 180rpx;
   width: 50%;
   text-align: center;
@@ -24,7 +24,7 @@
 }
 
 .user-motto{
-  margin:10px;
+  margin:10rpx;
   background-color: rgb(226, 226, 226);
 }
 page{

@@ -35,7 +35,9 @@
 .scoredetail{
     flex: 1;
     height: 150rpx;
-    background:rgba(185, 65, 189, 0.8);
+    /* background:rgba(235, 58, 211, 0.8); */
+    
+    background:rgba(253, 178, 16, 0.938);
     /*opacity: 0.6; */
     margin: 50rpx 20rpx 40rpx 20rpx;
     text-align: center;
@@ -47,9 +49,9 @@
 }
 
 .scoredesc{
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 50rpx;
-    margin-top: 10rpx;
+    margin-top: 23rpx;
     color:yellow;
 }
 .scorenumber{
