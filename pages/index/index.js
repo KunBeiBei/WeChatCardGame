@@ -58,47 +58,42 @@ Page({
     var that = this;
     // console.log("游戏页面跳转判断用户是否登录"); 
     if (e.detail.userInfo){
-      //存放用户信息
-      wx.setStorageSync('userInfo', e.detail.rawData);
-      this.setUserImage();
-      
-      // this.initNum().then(function (res) {
-      //   if(res.success === 1){
-          that.getGameNum().then(function (ress) {
-            if (ress.success === 3) { 
-              //直接进入游戏
-              wx.navigateTo({
-                url: '../game/game'
-              });
-            } else if (ress.success === 2) { 
-              //分享进游戏
-              wx.showToast({
-                title: '次数不足请分享',
-                icon: 'loading',
-                image: '../images/fff.png',
-                duration: 3000
-              });
-              that.setData({
-                ts: '请点击右上角进行转发分享'
-              }) 
-              
-            } else if (ress.success === 1){
-              //填表进游戏
-              wx.navigateTo({
-                url: '../table/table'
-              });
-            }else{
-              //不能进游戏
-              wx.showToast({
-                title: '明天继续',
-                icon: 'loading',
-                image: '../images/fff.png',
-                duration: 3000
-              });
-            }
-          });
-        // }
-      // }) 
+    //存放用户信息
+    wx.setStorageSync('userInfo', e.detail.rawData);
+    this.setUserImage();
+        that.getGameNum().then(function (ress) {
+          if (ress.success === 3) { 
+            //直接进入游戏
+            wx.navigateTo({
+              url: '../game/game'
+            });
+          } else if (ress.success === 2) { 
+            //分享进游戏
+            wx.showToast({
+              title: '次数不足请分享',
+              icon: 'loading',
+              image: '../images/fff.png',
+              duration: 3000
+            });
+            that.setData({
+              ts: '请点击右上角进行转发分享'
+            }) 
+            
+          } else if (ress.success === 1){
+            //填表进游戏
+            wx.navigateTo({
+              url: '../table/table'
+            });
+          }else{
+            //不能进游戏
+            wx.showToast({
+              title: '明天继续',
+              icon: 'loading',
+              image: '../images/fff.png',
+              duration: 3000
+            });
+          }
+        });
     }
   },
   viewScore: function (e) {
@@ -109,21 +104,7 @@ Page({
     });
     that.setData({
       ts: ''
-    })
-    // if (e.detail.rawData) {
-    //   //存放用户信息
-    //   wx.setStorageSync('userInfo', e.detail.rawData);
-    //   this.initNum().then(function (res) {
-    //     if (res.success === 1) {
-    //       // wx.navigateTo({
-    //       //   url: '../logs/logs'
-    //       // });
-    //       // that.setData({
-    //       //   ts: ''
-    //       // })
-    //     }
-    //   });
-    // }
+    });
   },
   adminCenter: function (e) {
     var that = this;
@@ -132,48 +113,15 @@ Page({
       //存放用户信息
       wx.setStorageSync('userInfo', e.detail.rawData);
       this.setUserImage();
-      // this.initNum().then(function (res) {
-        // if (res.success === 1) {
-          wx.navigateTo({
-            url: '../admin/admin'
-          });
-          that.setData({
-            ts: ''
-          })
-        // }
-      // });
+      wx.navigateTo({
+        url: '../admin/admin'
+      });
+      that.setData({
+        ts: ''
+      })
     }
   },
-  
-  //初始化次数
-  // initNum:function(){
-  //   var that = this;
-  //   return new Promise(function (resolve, reject) {
-  //     wx.login({
-  //       success: function (res) {
-  //         var userName = wx.getStorageSync('userInfo');
-  //         console.log("初始化次数");
-  //         console.log(res.code);
-  //         wx.request({
-  //           url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/initNum',
-  //           method: 'POST',
-  //           data: {
-  //             'code': res.code,
-  //             'userName': userName
-  //           },
-  //           success: function (data) {
-  //             if (data.data.state == 200) {
-  //               wx.setStorageSync('openId', data.data.openId);
-  //               resolve(data.data);
-  //             }else{
-  //               reject(data.data);
-  //             }
-  //           }
-  //         })
-  //       }
-  //     })
-  //   });
-  // },
+
   //获取游戏次数
   getGameNum: function () {
     var that = this;
