@@ -10,6 +10,10 @@ Page({
   },
   //事件处理函数
   onLoad: function () {
+
+    wx.showShareMenu({
+      withShareTicket: true
+    });
     console.log('index页面onLoad()')
     if (app.globalData.userInfo) {
       this.setData({
@@ -205,5 +209,26 @@ Page({
         console.log(data.data);
       }
     })
+  },
+  onShareAppMessage: function (e) {
+    return {
+      title: '自定义分享标题自定义分享标题自定义分享标题自定义分享标题自定义分享标题',
+      desc: '自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述自定义分享描述',
+      path: '/pages/index/index',
+      success(e) {
+        //判断是否群发
+        if (e.hasOwnProperty('shareTickets')) {
+          app.success(app);
+        } else {
+          app.notMass();
+        }
+      },
+      fail(e) {
+        app.fail();
+      },
+      complete() {
+        console.log("转发动作完成");
+      }
+    }
   }
 })

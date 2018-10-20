@@ -4,18 +4,18 @@
   display: block;
   flex-direction: column;
   align-items: center;
-  margin-top: -33rpx;/*20rpx*/
-  height: 180rpx;
   width: 50%;
   text-align: center;
+  padding: 8% 0;
 }
 
+/* 头像 */
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   border-radius: 50%;
 }
-
+/* 用户名 */
 .userinfo-nickname {
   color:rgb(0, 0, 0);
   width: 100%;
@@ -36,6 +36,7 @@ page{
   background-size:100% 100%;
   -moz-background-size:100% 100%;
   }
+  /* 头像名称按钮 */
 .container{
   padding: 50% 0;
 }
