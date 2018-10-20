@@ -6,7 +6,7 @@
   align-items: center;
   width: 50%;
   text-align: center;
-  padding: 8% 0;
+  padding: 15rpx 0;
 }
 
 /* 头像 */
