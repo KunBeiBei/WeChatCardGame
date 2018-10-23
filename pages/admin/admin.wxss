@@ -96,6 +96,9 @@
   text-align: center;
   font-size: 26rpx;
   float: left;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
 }
 .lqsj{
   width: 55%;
