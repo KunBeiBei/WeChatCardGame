@@ -201,9 +201,9 @@ Page({
   onShareAppMessage: function (res) {
     console.log('onShareAppMessage')
     return {
-      title: '自定义分享标题',
-      desc: '自定义分享描述',
-      path: '/pages/index/index',
+      title: '你萌翻，赢大奖！维尚校招预热，快来领走你的锦鲤!!',
+      desc: '你萌翻，赢大奖！维尚校招预热，快来领走你的锦鲤!!',
+      imageUrl: '/pages/images/zf.jpg',
       success(e) {
         //判断是否群发
         if(e.shareTickets == undefined){
