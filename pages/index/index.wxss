@@ -34,6 +34,9 @@
   background-color: #fff;
   border-radius: 40rpx;
 }
+button::after{
+  border: none;
+}
 page{
   background: url('http://202.104.22.2:60199/gamebg.jpg');
   height: 100%;
