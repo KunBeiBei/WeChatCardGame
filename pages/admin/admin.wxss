@@ -119,7 +119,7 @@
   height: 580rpx;
 }
 page{
-  background: url('http://202.104.22.2:60199/gamebg.jpg');
+  background: url('http://202.104.22.2:60199/gameAdminbBg.png');
   overflow-x:hidden;
   overflow-y:hidden;
   background-repeat:no-repeat;
