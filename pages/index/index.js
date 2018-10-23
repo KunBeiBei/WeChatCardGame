@@ -8,6 +8,12 @@ Page({
     welcome: '你好',
     ts: ''
   },
+
+  cs: function () {
+    wx.redirectTo({
+      url: '../table/table'
+    })
+  },
   //事件处理函数
   onLoad: function () {
 

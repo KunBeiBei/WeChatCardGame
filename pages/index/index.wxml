@@ -12,5 +12,7 @@
     <button class="user-motto" open-type="getUserInfo" bindgetuserinfo="adminCenter">个人中心</button>
     <!-- <button bindtap="cs">cs</button> -->
   </view>
-  
+<view class="ttt">
+  <text class='text'>活动规则</text>
+</view>
 </view>

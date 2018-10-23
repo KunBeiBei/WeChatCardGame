@@ -1,6 +1,7 @@
 <view class='list' wx:for="{{gift}}" wx:key="item">
   <image class="img" src="{{item.src}}"></image>
   <text class='tx one'>{{item.name}}</text>
-  <text class='tx two'>所需积分：{{item.points}}</text>
-  <button class='bt' bindtap="exchange" data-id="{{item.id}}">兑换</button>
+  <text class='tx {{item.ys}}'>所需积分：{{item.points}}</text>
+  <button class='bt {{item.sy}}' bindtap="exchange" data-id="{{item.id}}">兑换</button>
+  <image class="kcbz" src="../images/yqg.png" hidden='{{item.isShow}}'></image>
 </view>

@@ -2,7 +2,8 @@ var app = getApp();
 Page({
   data: {
     // text:"这是一个页面"
-    //array: ["中国", "美国", "巴西", "日本"],
+    array: ["请选择","安徽农业大学", "安徽大学", "安徽工业大学", "安徽工程大学","江南大学","南京林业大学","南京邮电大学","南京理工大学"],
+    index:0,
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
@@ -25,7 +26,7 @@ Page({
     var that = this;
     var formData = this.data.e.detail.value;
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-    if (formData.name == "" || formData.school == "" || formData.phone == "" || formData.profession == "" || formData.phone.length != 11 || !myreg.test(formData.phone)){
+    if (formData.name == "" || formData.school == "请选择" || formData.phone == "" || formData.profession == "" || formData.phone.length != 11 || !myreg.test(formData.phone)){
       //
       wx.showToast({
         title: '信息有误',
@@ -99,15 +100,15 @@ Page({
     })
   },
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
+
     wx.showToast({
-      title: '次数不足请填表',
+      title: '请填表进行操作',
       icon: 'loading',
       image: '../images/fff.png',
       duration: 3000

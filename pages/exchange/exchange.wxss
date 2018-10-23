@@ -16,6 +16,13 @@ page{background-color: #f4f1ec;}
   top: 20rpx;
   background-color: #ccc;
 }
+.kcbz{
+  width: 235rpx;
+  height: 235rpx;
+  position: absolute;
+  right: 50%;
+  top: 20rpx
+}
 .tx{
   width: 50%;
   height: 60rpx;
@@ -31,12 +38,34 @@ page{background-color: #f4f1ec;}
 .two{
   top: 100rpx;
   font-size: 30rpx;
+  /* color: #8a8a8a; */
   color: #e23535;
 }
 .bt{
   width: 140rpx;
   height: 60rpx;
+  /* background-color: #8a8a8a; */
   background-color: #e23535;
+  color: #fff;
+  line-height: 60rpx;
+  text-align: center;
+  position: absolute;
+  top: 160rpx;
+  right: 20rpx;
+  font-size: 30rpx;
+  border-radius: 60rpx;
+}
+.ys{
+  top: 100rpx;
+  font-size: 30rpx;
+  color: #8a8a8a;
+  /* color: #e23535; */
+}
+.sy{
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #8a8a8a;
+  /* background-color: #e23535; */
   color: #fff;
   line-height: 60rpx;
   text-align: center;

@@ -10,7 +10,8 @@ Page({
     indicatorDots: false,
     autoplay: true,
     interval: 4000,
-    duration: 1000
+    duration: 1000,
+    modalHidden: true
   },
   onShow: function () {
     console.log("刷新页面");
@@ -51,9 +52,42 @@ Page({
     
   },
   exchange: function (res) {
-    wx.navigateTo({
-      url: '../exchange/exchange'
+    
+    var that = this;
+    var openId = wx.getStorageSync('openId');
+    wx.request({
+      url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/apii/viewInfo',
+      method: 'POST',
+      data: {
+        'openId': openId
+      },
+      success: function (data) {
+        if (data.data.state == 200) {
+          wx.navigateTo({
+            url: '../exchange/exchange'
+          });
+        } else {
+          that.setData({
+            modalHidden: false
+          })
+        }
+      }
     })
+  },
+  //提交确认回调函数
+  confirm_one: function () {
+    wx.navigateTo({
+      url: '../table/table'
+    });
+    this.setData({
+      modalHidden: true
+    });
+  }, 
+  //提交取消回调函数
+  cancel_one: function () {
+    this.setData({
+      modalHidden: true
+    });
   },
   onShareAppMessage: function (e) {
     return {

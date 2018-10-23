@@ -55,4 +55,8 @@
       </view>
     </swiper-item>
   </swiper>
+  <!-- 确认框 -->
+  <modal title="提示" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">
+    是否填写信息进行兑换？
+  </modal>
 </view>

@@ -3,12 +3,23 @@ Page({
     gift: [
       
     ],
+    isShow: true,
+    ys: 'two',
+    sy: 'bt',
+    //已抢光样式
+    // isShow: fasle,
+    // ys: 'ys',
+    // sy: 'sy',
     openid: ''
   },
   onLoad: function (obj) {
     var that = this
     that.openid = wx.getStorageSync('openId');
     wx.request({
+      // method: 'POST',
+      // data: {
+      //   'openId': openId
+      // },
       url: 'https://www.yuebaoyuan.com.cn/wx/public/index.php/api2/getGift',
       success: function (res) {
         that.setData({

@@ -38,5 +38,12 @@ page{
   }
   /* 头像名称按钮 */
 .container{
-  padding: 50% 0;
+  /* padding-top: 50%; */
+  padding-top: 285rpx;
+}
+.text{
+  font-size: 15px;
+}
+.ttt{
+  margin-bottom: 10rpx;
 }
