@@ -29,7 +29,7 @@ button{
   color: rgb(190, 70, 70);
   float: left;
 
-  margin-top: -70vh;
+  margin-top: -85vh;
 }
 .userinfo-nicknames{
   font-size: 40px;
