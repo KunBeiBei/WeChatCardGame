@@ -3,5 +3,5 @@
   <text class='tx one'>{{item.name}}</text>
   <text class='tx {{item.ys}}'>所需积分：{{item.points}}</text>
   <button class='bt {{item.sy}}' bindtap="exchange" data-id="{{item.id}}">兑换</button>
-  <image class="kcbz" src="../images/yqg.png" hidden='{{item.isShow}}'></image>
+  <image class="kcbz" src="../images/yqg.png" hidden="{{item.isShow == 0 ? false : true}}" ></image>
 </view>
