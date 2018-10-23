@@ -1,12 +1,15 @@
 /**index.wxss**/
 .userinfo {
-  /* //flex */
   display: block;
-  flex-direction: column;
-  align-items: center;
   width: 50%;
   text-align: center;
-  padding: 15rpx 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin:auto;
+  height: 500rpx;
 }
 
 /* 头像 */
@@ -38,12 +41,12 @@ page{
   }
   /* 头像名称按钮 */
 .container{
-  /* padding-top: 50%; */
-  padding-top: 285rpx;
+  position: relative
 }
 .text{
   font-size: 15px;
 }
 .ttt{
-  margin-bottom: 10rpx;
+  position: absolute;
+  bottom: 20rpx;
 }
