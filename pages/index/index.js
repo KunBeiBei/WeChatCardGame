@@ -184,5 +184,17 @@ Page({
         console.log("转发动作完成");
       }
     }
+  },
+  //打开规则提示
+  showRule: function () {
+    this.setData({
+      isRuleTrue: true
+    })
+  },
+  //关闭规则提示
+  hideRule: function () {
+    this.setData({
+      isRuleTrue: false
+    })
   }
 })

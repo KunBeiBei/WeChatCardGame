@@ -13,6 +13,34 @@
     <!-- <button bindtap="cs">cs</button> -->
   </view>
 <view class="ttt">
-  <text class='text'>活动规则</text>
+  <text class='text rule' bindtap='showRule'>活动规则</text>
 </view>
+<view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}" bindtap='hideRule'>
+        <scroll-view class='ruleZhezhaoContent' scroll-y>
+            <text class='h1'>活动规则</text>
+            <text class='h1'>-------------</text>
+            <text class='h2'>游戏说明：
+1.可通过微信转发游戏小程序到群增加游戏挑战次数，每天最多挑战3次；
+2.根据游戏获胜用时取得相应游戏积分；
+3.可在个人中心使用累积积分申请礼品兑换，生成兑换码。礼品限量，先兑先得；
+4.参与所在学校"维尚招聘"宣讲会，会后可凭兑换码领取相应礼品；
+5.领取礼品时间截止至该校"维尚招聘"宣讲会结束时间。
+
+游戏规则：
+1.玩家点击开始游戏后进入游戏；
+2.系统随机打乱8对卡牌显示到界面上，可记牌3秒；
+3.两两翻牌，卡牌相同则记成功一对；不同，则两张都恢复初始状态；
+4.所有卡牌都配对成功后即游戏胜利。
+
+得分规则：
+30s内完成游戏获得50积分；
+30~40s内完成游戏获得45积分；
+40~50s内完成游戏获得40积分；
+50~60s内完成游戏获得35积分；
+60~70s内完成游戏获得30积分；
+70~80s内完成游戏获得25积分；
+80~90s内完成游戏获得20积分；
+超过90s完成游戏不得积分。</text>
+        </scroll-view>
+    </view>
 </view>

@@ -27,8 +27,12 @@
 }
 
 .user-motto{
-  margin:10rpx;
-  background-color: rgb(226, 226, 226);
+  margin:20rpx auto;
+  width: 280rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  border-radius: 40rpx;
 }
 page{
   background: url('http://202.104.22.2:60199/gamebg.jpg');
@@ -49,4 +53,60 @@ page{
 .ttt{
   position: absolute;
   bottom: 20rpx;
+}
+.isRuleShow{
+    display: block;
+}
+.isRuleHide{
+    display: none;
+}
+.ruleZhezhao{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:rgba(0, 0, 0, .5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.ruleZhezhaoContent{
+    padding: 20rpx 0;
+    width: 80%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    height: 600rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.ruleHide{
+    height: 60rpx!important;
+    width: 60rpx!important;
+    position: absolute;
+    top: -20rpx;
+    right: -20rpx;
+}
+.rule{
+    display: block;
+    text-align: center;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 30rpx;
+    width: 200rpx;
+}
+.h1{
+  display: block;
+  text-align: center;
+}
+.h2{
+  width: 90%;
+  display: block;
+  margin: 0 auto;
 }
